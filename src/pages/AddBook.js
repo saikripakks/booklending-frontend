@@ -25,7 +25,7 @@ const handleSubmit = (e) => {
     return;
   }
 
-  axios.post('http://127.0.0.1:8000/api/books/add/', book, {
+  axios.post('https://booklending.infinitysagax.net/api/books/add/', book, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

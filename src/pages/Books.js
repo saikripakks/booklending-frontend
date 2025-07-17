@@ -51,7 +51,7 @@ export default function Books() {
       return;
     }
 
-    axios.post(`http://127.0.0.1:8000/api/books/borrow/${bookId}/`, {}, {
+    axios.post(`https://booklending.infinitysagax.net/api/books/borrow/${bookId}/`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {

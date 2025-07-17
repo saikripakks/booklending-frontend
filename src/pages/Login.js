@@ -18,11 +18,18 @@ export default function Login() {
     <div className="max-w-md mx-auto p-4 border mt-10 rounded shadow">
       <h2 className="text-xl font-bold mb-4">Login</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" className="w-full p-2 border rounded" placeholder="Username"
+        <div>
+<input type="text" className="w-full p-2 border rounded" placeholder="Username"
           onChange={e => setForm({ ...form, username: e.target.value })} />
-        <input type="password" className="w-full p-2 border rounded" placeholder="Password"
+        </div>
+        <div>
+<input type="password" className="w-full p-2 border rounded" placeholder="Password"
           onChange={e => setForm({ ...form, password: e.target.value })} />
-        <button type="submit" className="mt-2  btn btn-primary">Login</button>
+        </div>
+        <div>
+<button type="submit" className="mt-2  btn btn-primary">Login</button>
+        </div>
+        
       </form>
     </div>
   );

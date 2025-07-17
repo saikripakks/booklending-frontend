@@ -8,7 +8,7 @@ export default function ReadStats() {
     const token = localStorage.getItem('access');
     if (!token) return;
 
-    axios.get('http://127.0.0.1:8000/api/user/read-stats/', {
+    axios.get('https://booklending.infinitysagax.net/api/user/read-stats/', {
       headers: {
         Authorization: `Bearer ${token}`
       }

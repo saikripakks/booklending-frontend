@@ -49,6 +49,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "proxy": "http://127.0.0.1:8000"
+  "proxy": "https://booklending.infinitysagax.net"
 
 }

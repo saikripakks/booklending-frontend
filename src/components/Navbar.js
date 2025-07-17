@@ -11,7 +11,7 @@ export default function Navbar() {
     useEffect(() => {
         const token = localStorage.getItem('access');
         if (isLoggedIn && token) {
-            axios.get('http://127.0.0.1:8000/api/auth/me/', {
+            axios.get('https://booklending.infinitysagax.net/api/auth/me/', {
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then(res => setEmail(res.data.email))

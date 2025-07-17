@@ -13,7 +13,7 @@ export default function Borrowed() {
   }, []);
 const returnBook = (borrowId) => {
   const token = localStorage.getItem('access');
-  axios.post(`http://127.0.0.1:8000/api/return/${borrowId}/`, {}, {
+  axios.post(`https://booklending.infinitysagax.net/api/return/${borrowId}/`, {}, {
     headers: {
       Authorization: `Bearer ${token}`
     }

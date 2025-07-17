@@ -8,7 +8,7 @@ useEffect(() => {
   const token = localStorage.getItem('access');
   const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
 
-  axios.get('http://127.0.0.1:8000/api/recommend/', config)
+  axios.get('https://booklending.infinitysagax.net/api/recommend/', config)
     .then(res => setBooks(res.data))
     .catch(err => {
       console.error('Failed to load recommendations', err);
