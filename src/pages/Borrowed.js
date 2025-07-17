@@ -5,7 +5,7 @@ export default function Borrowed() {
   const [borrowed, setBorrowed] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/borrowed/', {
+    axios.get('https://booklending.infinitysagax.net/api/borrowed/', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`
       }

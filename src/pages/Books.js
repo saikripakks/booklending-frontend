@@ -14,11 +14,11 @@ export default function Books() {
 
   // Fetch genres and authors for filter options
   useEffect(() => {
-    axios.get('/api/books/genres/')
+    axios.get('https://booklending.infinitysagax.net/api/books/genres/')
       .then(res => setGenres(res.data))
       .catch(err => console.error('Genre fetch failed:', err));
 
-    axios.get('/api/books/authors/')
+    axios.get('https://booklending.infinitysagax.net/api/books/authors/')
       .then(res => setAuthors(res.data))
       .catch(err => console.error('Authors fetch failed:', err));
   }, []);
@@ -32,7 +32,7 @@ export default function Books() {
     if (filters.author) params.append('author', filters.author);
     if (filters.available) params.append('available', 'true');
 
-    axios.get(`/api/books/?${params.toString()}`)
+    axios.get(`https://booklending.infinitysagax.net/api/books/?${params.toString()}`)
       .then(res => {
         const bookList = res.data.results || res.data;
         setBooks(bookList);
