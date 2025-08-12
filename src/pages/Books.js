@@ -11,14 +11,14 @@ export default function Books() {
   });
   const [genres, setGenres] = useState([]);
   const [authors, setAuthors] = useState([]);
-
+const [refresh, setRefresh] = useState(0);
   // Fetch genres and authors for filter options
   useEffect(() => {
-    axios.get('https://booklending.infinitysagax.net/api/books/genres/')
+    axios.get('https://booklending.kripzart.in/api/books/genres/')
       .then(res => setGenres(res.data))
       .catch(err => console.error('Genre fetch failed:', err));
 
-    axios.get('https://booklending.infinitysagax.net/api/books/authors/')
+    axios.get('https://booklending.kripzart.in/api/books/authors/')
       .then(res => setAuthors(res.data))
       .catch(err => console.error('Authors fetch failed:', err));
   }, []);
@@ -32,37 +32,36 @@ export default function Books() {
     if (filters.author) params.append('author', filters.author);
     if (filters.available) params.append('available', 'true');
 
-    axios.get(`https://booklending.infinitysagax.net/api/books/?${params.toString()}`)
-      .then(res => {
-        const bookList = res.data.results || res.data;
-        setBooks(bookList);
-      })
-      .catch(err => {
-        console.error('Book fetch failed:', err);
-        setBooks([]);
-      });
-  }, [page, filters]);
 
-  // Borrow Book Handler
-  const borrowBook = (bookId) => {
-    const token = localStorage.getItem('access');
-    if (!token) {
-      alert("Please login first.");
-      return;
-    }
-
-    axios.post(`https://booklending.infinitysagax.net/api/books/borrow/${bookId}/`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
+  axios.get(`https://booklending.kripzart.in/api/books/?${params.toString()}`)
+    .then(res => {
+      const bookList = res.data.results || res.data;
+      setBooks(bookList);
     })
-      .then(res => {
-        alert(res.data.detail);
-        // Refresh books after borrowing to update availability
-        setPage(p => p); // This will trigger useEffect to refetch
-      })
-      .catch(err => {
-        console.error('Borrow error:', err);
-        alert(err.response?.data?.detail || 'Failed to borrow book.');
-      });
+    .catch(err => {
+      console.error('Book fetch failed:', err);
+      setBooks([]);
+    });
+}, [page, filters, refresh]); // ✅ added refresh here
+
+const borrowBook = (bookId) => {
+  const token = localStorage.getItem('access');
+  if (!token) {
+    alert("Please login first.");
+    return;
+  }
+
+  axios.post(`https://booklending.kripzart.in/api/books/borrow/${bookId}/`, {}, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      alert(res.data.detail);
+      setRefresh(r => r + 1); // ✅ trigger refresh
+    })
+    .catch(err => {
+      console.error('Borrow error:', err);
+      alert(err.response?.data?.detail || 'Failed to borrow book.');
+    });
   };
 
   const handleFilterChange = (e) => {

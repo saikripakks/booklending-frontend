@@ -5,7 +5,7 @@ export default function Borrowed() {
   const [borrowed, setBorrowed] = useState([]);
 
   useEffect(() => {
-    axios.get('https://booklending.infinitysagax.net/api/borrowed/', {
+    axios.get('https://booklending.kripzart.in/api/borrowed/', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`
       }
@@ -13,7 +13,7 @@ export default function Borrowed() {
   }, []);
 const returnBook = (borrowId) => {
   const token = localStorage.getItem('access');
-  axios.post(`https://booklending.infinitysagax.net/api/return/${borrowId}/`, {}, {
+  axios.post(`https://booklending.kripzart.in/api/return/${borrowId}/`, {}, {
     headers: {
       Authorization: `Bearer ${token}`
     }

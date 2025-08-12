@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://booklending.infinitysagax.net/api/',
+  baseURL: 'https://booklending.kripzart.in/api/',
 });
 
 // Add Authorization token if available

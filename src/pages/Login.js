@@ -8,7 +8,7 @@ export default function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://booklending.infinitysagax.net/api/token/', form).then(res => {
+    axios.post('https://booklending.kripzart.in/api/token/', form).then(res => {
       localStorage.setItem('access', res.data.access);
       navigate('/');
     }).catch(err => alert('Login failed'));

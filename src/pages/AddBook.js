@@ -25,7 +25,7 @@ const handleSubmit = (e) => {
     return;
   }
 
-  axios.post('https://booklending.infinitysagax.net/api/books/add/', book, {
+  axios.post('https://booklending.kripzart.in/api/books/add/', book, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

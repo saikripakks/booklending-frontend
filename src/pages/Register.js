@@ -8,7 +8,7 @@ export default function Register() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post('https://booklending.infinitysagax.net/api/register/', form).then(() => navigate('/login'));
+        axios.post('https://booklending.kripzart.in/api/register/', form).then(() => navigate('/login'));
     };
 
     return (
